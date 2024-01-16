@@ -1,4 +1,4 @@
-const { as } = require("pg-promise");
+
 const db = require("../db/dbConfig.js");
 
 const getAllEvents = async () => {
