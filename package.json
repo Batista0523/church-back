@@ -1,7 +1,8 @@
 {
   "name": "backend-church",
+  "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "project of church",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,14 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
-// const eventControllers = require("./controllers/eventControllers,js");
+const eventControllers = require("./controllers/eventControllers.js");
 
 app.use(cors());
 app.use(express.json());
 
-// app.use("events", eventControllers);
-
+app.use("/events", eventControllers);
 app.get("/", (req, res) => {
   res.send("Welcome to event /events to see info");
 });
@@ -18,4 +16,4 @@ app.get("*", (req, res) => {
 });
 
 
-module.exports = app
+module.exports = app;
