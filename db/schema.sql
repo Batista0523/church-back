@@ -7,5 +7,6 @@ CREATE TABLE events (
     title VARCHAR(255) NOT NULL,
     descriptions TEXT,
     pictures TEXT,
-    schedule TIMESTAMP
+    schedule DATE,
+    locations TEXT
 );

@@ -1,4 +1,3 @@
-
 const db = require("../db/dbConfig.js");
 
 const getAllEvents = async () => {
@@ -25,7 +24,13 @@ const createEvent = async (events) => {
   try {
     const createdEvents = await db.one(
       "INSERT INTO events(title,descriptions,pictures,schedule) VALUES($1,$2,$3,$4)RETURNING *",
-      [events.title, events.descriptions, events.pictures, events.schedule]
+      [
+        events.title,
+        events.descriptions,
+        events.pictures,
+        events.schedule,
+        events.locations,
+      ]
     );
     return createdEvents;
   } catch (error) {
@@ -47,10 +52,10 @@ const deleteEvent = async (id) => {
 
 const updateEvent = async (id, events) => {
   try {
-    const [title, descriptions, pictures, schedule] = events;
+    const [title, descriptions, pictures, schedule, locations] = events;
     const updatedEvent = await db.one(
-      "UPDATE events SET title=$1,descriptions=$2,pictures=$3,schedule=$4 WHERE id=$5 RETURNING *",
-      [title, descriptions, pictures, schedule, id]
+      "UPDATE events SET title=$1 , descriptions=$2 , pictures=$3 , schedule=$4 , locations=$6 WHERE id=$6 RETURNING *",
+      [title, descriptions, pictures, schedule, locations, id]
     );
   } catch (error) {
     return error;
